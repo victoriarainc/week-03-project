@@ -36,7 +36,7 @@ for (let i = 0; i < opbuttons.length; i++) {
     // Push operation to calculation array
 
     let mem = document.querySelector('#inputField');
-    mem.innerHTML += `${opbuttons[i].innerHTML}`;
+    mem.innerHTML = '';
     // that button is 'stored' in the text box
 
   });
@@ -46,8 +46,6 @@ let equal = document.querySelector('#answer');
 // querySelector returns just the single button '='
 
 equal.addEventListener("click", function() {
-
-  alert(`You pressed: ${equal.innerHTML}`);
 
   calculation.push(Number(currentNumber));
   // Push currentNumber to calculation array
@@ -60,18 +58,35 @@ equal.addEventListener("click", function() {
   let answer = 0;
   // Create a space to store the result in order to push to indexField
 
-  if (operator === '+'){
-
-  } else if (operator === '-'){
-
-  } else if (operator === '*'){
-
-  } else if (operator === '/'){
-    
+  if (operator === '+') {
+    answer = param1 + param2;
+  } else if (operator === '-') {
+    answer = param1 - param2;
+  } else if (operator === '*') {
+    answer = param1 * param2;
+  } else if (operator === '/') {
+    answer = param1 / param2;
   }
-  // TODO: Execute operation on the two numbers
-  // TODO: Display answer
+  // Execute operation on the two numbers
 
   let mem = document.querySelector('#inputField');
-  mem.innerHTML += `${equal.innerHTML}`;
+  mem.innerHTML = `${answer}`;
+  // Display answer
+
+  currentNumber = `${answer}`;
+  // Set currentNumber equal to answer (as a string
+  // in order to continue to operate)
+
+  calculation = [];
+  // empty calculation array to start fresh
+});
+
+let clear = document.querySelector('#clear');
+// querySelector returns just the single button 'C'
+
+clear.addEventListener("click", function() {
+  let mem = document.querySelector('#inputField');
+  mem.innerHTML = '';
+  currentNumber = '';
+  calculation = [];
 });
