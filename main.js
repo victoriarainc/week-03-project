@@ -36,7 +36,7 @@ for (let i = 0; i < opbuttons.length; i++) {
     // Push operation to calculation array
 
     let mem = document.querySelector('#inputField');
-    mem.innerHTML = '';
+     mem.innerHTML += `${opbuttons[i].innerHTML}`;
     // that button is 'stored' in the text box
 
   });
